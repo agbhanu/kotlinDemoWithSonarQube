@@ -1,5 +1,6 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
+    id "org.sonarqube" version "2.5"
 }
 
 group 'com.psl'
@@ -20,4 +21,17 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://10.80.66.3:9000/" //  url is your sonar server
+        property "sonar.projectName", "Sonar_Demo_with_Kotlin"   //  this name will appear in dashboard
+        property "sonar.projectKey", "Sonar_Demo_with_Kotlin" // It sould be a keybased on this report is created
+        property "sonar.projectVersion", "1.0"
+        property "sonar.sources", "./src/main/kotlin"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.java.binaries", "./src"
+        property "sonar.tests", "./src/test/kotlin"
+    }
 }
