@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {docker { image 'gradle:jdk8-slim' } }
            stages {
                    stage('clean build'){
                      steps{
